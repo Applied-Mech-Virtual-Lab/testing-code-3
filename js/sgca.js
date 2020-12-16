@@ -131,7 +131,7 @@ function magic()
 	if (simsubscreennum==1)
 	{
 		document.getElementById('nextButton').style.visibility="hidden";
-		document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 70px; top: 245px; height: 40px; z-index: 10;";
+		document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 520px; top: 215px; height: 40px; z-index: 10;";
 
 		myInt = setInterval(function(){ animatearrow(); }, 500);
 
@@ -147,10 +147,12 @@ function magic()
 
 	else if (simsubscreennum==2)
 	{
+
 		document.getElementById('nextButton').style.visibility="hidden";
-		document.getElementById('canvas1_img2').style.visibility="hidden";
 		document.getElementById('canvas2_img1').style.visibility="visible";
-		validateAnswer(0,0,"100px","420px");
+		document.getElementById('canvas2_img1').onclick=function() { step2(); };
+		document.getElementById("string_2").addEventListener("animationend", function() { document.getElementById('string_2').style.visibility='hidden'; });
+
 	}
 	else if (simsubscreennum==3)
 	{
@@ -285,24 +287,16 @@ function magic()
 	function step1()
 {
 	myStopFunction();
-	document.getElementById('canvas1_img1').style.visibility="hidden";
-	document.getElementById('canvas1_img2').style.visibility="visible";
- 	document.getElementById('nextButton').style.visibility="visible";
+	document.getElementById('string').style.webkitAnimationPlayState='running'; 	
+	document.getElementById('box').style.webkitAnimationPlayState='running';
+	document.getElementById('nextButton').style.visibility="visible";
 }
 
 
 	function step2()
 {
-	myStopFunction();
-	if(document.getElementById('myList').value == 2)
-		{
-			document.getElementById('Answer').textContent="Correct Answer!";
-			document.getElementById('nextButton').style.visibility="visible";
-		}
-	else
-	{
-		document.getElementById('Answer').textContent="Incorrect Answer!";
-	}
+	document.getElementById('string_2').style.webkitAnimationPlayState='running';
+	document.getElementById('box_2').style.webkitAnimationPlayState='running';
 
 }
 
